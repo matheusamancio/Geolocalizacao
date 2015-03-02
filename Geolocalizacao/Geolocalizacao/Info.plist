@@ -17,6 +17,10 @@
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>Matheus-Amancio.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>

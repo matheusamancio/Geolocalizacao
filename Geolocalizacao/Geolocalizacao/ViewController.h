@@ -13,7 +13,11 @@
 @interface ViewController : UIViewController
 {
     CLLocationManager * locationManager;
+    
 }
+
+@property (weak, nonatomic) IBOutlet MKMapView *worldmap;
+
 
 
 @end

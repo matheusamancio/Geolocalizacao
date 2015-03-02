@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,15 +17,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WXB-bo-G2k">
-                                <rect key="frame" x="-8" y="-34" width="600" height="600"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WXB-bo-G2k">
+                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="WXB-bo-G2k" secondAttribute="centerY" id="0W7-LM-ue0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WXB-bo-G2k" secondAttribute="trailing" id="4Jw-UV-Kbq"/>
+                            <constraint firstAttribute="centerX" secondItem="WXB-bo-G2k" secondAttribute="centerX" id="G91-ud-1Bh"/>
+                            <constraint firstItem="WXB-bo-G2k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OTX-nc-Yoe"/>
+                            <constraint firstItem="WXB-bo-G2k" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="TMR-Mt-u6G"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WXB-bo-G2k" secondAttribute="bottom" id="VkU-gL-56j"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0W7-LM-ue0"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="worldmap" destination="WXB-bo-G2k" id="kDq-hr-Mnc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="208" y="182"/>
         </scene>
     </scenes>
 </document>
