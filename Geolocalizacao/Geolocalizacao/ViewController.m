@@ -9,15 +9,11 @@
 #import "ViewController.h"
 
 
-@interface ViewController () <CLLocationManagerDelegate>
+@interface ViewController ()
+
 @end
 
-
-
 @implementation ViewController
-@synthesize worldmap;
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +34,7 @@
     NSLog(@"%@", [locations lastObject]);
     CLLocationCoordinate2D loc = [[locations lastObject] coordinate];
     MKCoordinateRegion region= MKCoordinateRegionMakeWithDistance(loc, 250, 250);
-    [worldmap setRegion: region animated:YES];
+    [_mapView setRegion: region animated:YES];
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
