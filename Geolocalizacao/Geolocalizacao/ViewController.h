@@ -11,11 +11,16 @@
 #import "CoreLocation/CoreLocation.h"
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
-
+{
+    BOOL atualizacao;
+    MKCoordinateRegion region;
+}
 @property CLLocationManager * locationManager;
+
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
+- (IBAction)currentLocation:(id)sender;
 
 
 @end

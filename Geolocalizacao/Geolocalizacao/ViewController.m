@@ -15,16 +15,20 @@
 
 @implementation ViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    locationManager = [[CLLocationManager alloc]init];
-    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    [locationManager setDelegate:self];
+    _locationManager = [[CLLocationManager alloc]init];
     
-    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-        [locationManager requestWhenInUseAuthorization];
+    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [_locationManager setDelegate:self];
+     atualizacao = true;
+    
+    if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [_locationManager requestWhenInUseAuthorization];
     }
-    [locationManager startUpdatingLocation];
+   
+    [_locationManager startUpdatingLocation];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -33,8 +37,14 @@
     
     NSLog(@"%@", [locations lastObject]);
     CLLocationCoordinate2D loc = [[locations lastObject] coordinate];
-    MKCoordinateRegion region= MKCoordinateRegionMakeWithDistance(loc, 250, 250);
-    [_mapView setRegion: region animated:YES];
+    region= MKCoordinateRegionMakeWithDistance(loc, 250, 250);
+    
+   
+    
+    if (atualizacao) {
+        [_mapView setRegion: region animated:YES];
+        atualizacao = false;
+    }
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -48,4 +58,7 @@
 }
 
 
+- (IBAction)currentLocation:(id)sender {
+    [_mapView setRegion: region animated:YES];
+}
 @end
