@@ -37,7 +37,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="worldmap" destination="WXB-bo-G2k" id="kDq-hr-Mnc"/>
+                        <outlet property="mapView" destination="WXB-bo-G2k" id="t6X-Ji-thF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

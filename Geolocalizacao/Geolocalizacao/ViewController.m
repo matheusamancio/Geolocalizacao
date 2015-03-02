@@ -9,24 +9,19 @@
 #import "ViewController.h"
 
 
-@interface ViewController () <CLLocationManagerDelegate>
+@interface ViewController ()
+
 @end
 
-
-
 @implementation ViewController
-@synthesize worldmap;
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    locationManager = [[CLLocationManager alloc]init];
-    [locationManager requestWhenInUseAuthorization];
-    [locationManager requestAlwaysAuthorization];
-    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    [locationManager setDelegate:self];
-    [locationManager startUpdatingLocation];
+    _locationManager = [[CLLocationManager alloc]init];
+    [_locationManager requestWhenInUseAuthorization];
+    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [_locationManager setDelegate:self];
+    [_locationManager startUpdatingLocation];
     
 
     // Do any additional setup after loading the view, typically from a nib.
@@ -38,7 +33,7 @@
     NSLog(@"%@", [locations lastObject]);
     CLLocationCoordinate2D loc = [[locations lastObject] coordinate];
     MKCoordinateRegion region= MKCoordinateRegionMakeWithDistance(loc, 250, 250);
-    [worldmap setRegion: region animated:YES];
+    [_mapView setRegion: region animated:YES];
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
