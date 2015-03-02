@@ -22,13 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     locationManager = [[CLLocationManager alloc]init];
-    [locationManager requestWhenInUseAuthorization];
-    [locationManager requestAlwaysAuthorization];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [locationManager setDelegate:self];
-    [locationManager startUpdatingLocation];
     
-
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    }
+    [locationManager startUpdatingLocation];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
