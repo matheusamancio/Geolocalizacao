@@ -57,6 +57,7 @@
                             </textField>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WXB-bo-G2k">
                                 <rect key="frame" x="0.0" y="122" width="600" height="434"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="8Vl-fr-qLj"/>
                                     <constraint firstAttribute="height" constant="434" id="SGi-Ca-Kmg"/>
@@ -77,6 +78,9 @@
                                         <exclude reference="oQL-ZL-Nm5"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="kZw-hA-ml7" appends="YES" id="3DR-ly-8JW"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NpO-YX-07R">
                                 <rect key="frame" x="390" y="72" width="33" height="30"/>
@@ -158,13 +162,6 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="VUV-m3-Mdu"/>
-                                <exclude reference="Zmi-e7-eA8"/>
-                                <exclude reference="fpS-U0-Kqz"/>
-                                <exclude reference="kqU-dB-bBa"/>
-                                <exclude reference="nLh-aX-pSM"/>
-                                <exclude reference="U6i-9t-KNg"/>
-                                <exclude reference="gNh-oA-FPz"/>
                                 <exclude reference="0W7-LM-ue0"/>
                                 <exclude reference="3PQ-bo-Ygt"/>
                                 <exclude reference="4Jw-UV-Kbq"/>
@@ -183,6 +180,13 @@
                                 <exclude reference="jDz-Qw-hNw"/>
                                 <exclude reference="wjv-06-nCB"/>
                                 <exclude reference="yfo-9L-bUM"/>
+                                <exclude reference="VUV-m3-Mdu"/>
+                                <exclude reference="Zmi-e7-eA8"/>
+                                <exclude reference="fpS-U0-Kqz"/>
+                                <exclude reference="kqU-dB-bBa"/>
+                                <exclude reference="nLh-aX-pSM"/>
+                                <exclude reference="U6i-9t-KNg"/>
+                                <exclude reference="gNh-oA-FPz"/>
                                 <exclude reference="46v-QY-WiX"/>
                                 <exclude reference="60z-fa-Rg9"/>
                                 <exclude reference="IqQ-2F-MpM"/>
@@ -198,6 +202,13 @@
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
+                                <include reference="3PQ-bo-Ygt"/>
+                                <exclude reference="5RK-R9-d5L"/>
+                                <exclude reference="6nF-DF-IkC"/>
+                                <exclude reference="cJZ-Pc-mik"/>
+                                <exclude reference="cXD-nO-OCe"/>
+                                <include reference="jDz-Qw-hNw"/>
+                                <include reference="wjv-06-nCB"/>
                                 <exclude reference="3Fj-Ap-b9J"/>
                                 <include reference="fpS-U0-Kqz"/>
                                 <exclude reference="nI6-R8-FRi"/>
@@ -207,13 +218,6 @@
                                 <exclude reference="ZPV-Nf-zSw"/>
                                 <include reference="gNh-oA-FPz"/>
                                 <exclude reference="yWV-Ca-x59"/>
-                                <include reference="3PQ-bo-Ygt"/>
-                                <exclude reference="5RK-R9-d5L"/>
-                                <exclude reference="6nF-DF-IkC"/>
-                                <exclude reference="cJZ-Pc-mik"/>
-                                <exclude reference="cXD-nO-OCe"/>
-                                <include reference="jDz-Qw-hNw"/>
-                                <include reference="wjv-06-nCB"/>
                                 <include reference="46v-QY-WiX"/>
                                 <exclude reference="60z-fa-Rg9"/>
                                 <exclude reference="9ST-vJ-OJl"/>
@@ -226,9 +230,6 @@
                                 <exclude reference="pVg-a6-Yzj"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="kZw-hA-ml7" appends="YES" id="jtU-MS-sm6"/>
-                        </connections>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
