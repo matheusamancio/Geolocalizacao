@@ -19,6 +19,15 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WXB-bo-G2k">
                                 <rect key="frame" x="16" y="0.0" width="568" height="556"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="kZw-hA-ml7" appends="YES" id="N9d-kX-Qu3"/>
+                                    <outletCollection property="gestureRecognizers" destination="kZw-hA-ml7" appends="YES" id="xDQ-VF-40P"/>
+                                    <outletCollection property="gestureRecognizers" destination="kZw-hA-ml7" appends="YES" id="o82-SO-GHk"/>
+                                    <outletCollection property="gestureRecognizers" destination="kZw-hA-ml7" appends="YES" id="Qqj-15-ELC"/>
+                                    <outletCollection property="gestureRecognizers" destination="kZw-hA-ml7" appends="YES" id="C3g-zD-P9P"/>
+                                    <outletCollection property="gestureRecognizers" destination="kZw-hA-ml7" appends="YES" id="MJo-qn-hcf"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xB5-Gm-6Ig">
                                 <rect key="frame" x="478" y="402" width="76" height="54"/>
@@ -41,6 +50,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="WXB-bo-G2k" secondAttribute="centerY" id="0W7-LM-ue0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WXB-bo-G2k" secondAttribute="trailing" id="4Jw-UV-Kbq"/>
@@ -60,6 +70,9 @@
                                 <exclude reference="Nlz-R1-zQZ"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="kZw-hA-ml7" appends="YES" id="jtU-MS-sm6"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -68,8 +81,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="kZw-hA-ml7">
+                    <connections>
+                        <action selector="pinar:" destination="BYZ-38-t0r" id="MhR-4z-Cny"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="208" y="182"/>
+            <point key="canvasLocation" x="220" y="190"/>
         </scene>
     </scenes>
     <resources>

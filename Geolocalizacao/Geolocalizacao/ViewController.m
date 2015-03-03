@@ -61,4 +61,16 @@
 - (IBAction)currentLocation:(id)sender {
     [_mapView setRegion: region animated:YES];
 }
+
+- (IBAction)pinar:(id)sender {
+    CGPoint point = [sender locationInView:self.mapView];
+    
+    CLLocationCoordinate2D tapPoint = [self.mapView convertPoint:point toCoordinateFromView:self.view];
+    
+    MKPointAnnotation *pm = [[MKPointAnnotation alloc] init];
+    
+    pm.coordinate = tapPoint;
+    [self.mapView removeAnnotations: [self.mapView annotations]];
+    [self.mapView addAnnotation:pm];
+}
 @end

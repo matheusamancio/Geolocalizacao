@@ -16,7 +16,9 @@
     MKCoordinateRegion region;
 }
 @property CLLocationManager * locationManager;
+@property MKPointAnnotation *pm;
 
+- (IBAction)pinar:(id)sender;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
