@@ -16,7 +16,6 @@
 		DDB6C8EE1AA48A2E007A1EB2 /* GeolocalizacaoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB6C8ED1AA48A2E007A1EB2 /* GeolocalizacaoTests.m */; };
 		DDB6C8F81AA48A3F007A1EB2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB6C8F71AA48A3F007A1EB2 /* MapKit.framework */; };
 		DDB6C8FA1AA48A65007A1EB2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB6C8F91AA48A65007A1EB2 /* CoreLocation.framework */; };
-		DDB6C8FC1AA4B31B007A1EB2 /* target-512.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB6C8FB1AA4B31B007A1EB2 /* target-512.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +44,6 @@
 		DDB6C8ED1AA48A2E007A1EB2 /* GeolocalizacaoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeolocalizacaoTests.m; sourceTree = "<group>"; };
 		DDB6C8F71AA48A3F007A1EB2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DDB6C8F91AA48A65007A1EB2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		DDB6C8FB1AA4B31B007A1EB2 /* target-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "target-512.png"; path = "../../../../Downloads/target-512.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +95,6 @@
 				DDB6C8D91AA48A2E007A1EB2 /* ViewController.m */,
 				DDB6C8DB1AA48A2E007A1EB2 /* Main.storyboard */,
 				DDB6C8DE1AA48A2E007A1EB2 /* Images.xcassets */,
-				DDB6C8FB1AA4B31B007A1EB2 /* target-512.png */,
 				DDB6C8E01AA48A2E007A1EB2 /* LaunchScreen.xib */,
 				DDB6C8D11AA48A2E007A1EB2 /* Supporting Files */,
 			);
@@ -216,7 +213,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDB6C8DD1AA48A2E007A1EB2 /* Main.storyboard in Resources */,
-				DDB6C8FC1AA4B31B007A1EB2 /* target-512.png in Resources */,
 				DDB6C8E21AA48A2E007A1EB2 /* LaunchScreen.xib in Resources */,
 				DDB6C8DF1AA48A2E007A1EB2 /* Images.xcassets in Resources */,
 			);
@@ -431,6 +427,7 @@
 				DDB6C8F31AA48A2E007A1EB2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DDB6C8F41AA48A2E007A1EB2 /* Build configuration list for PBXNativeTarget "GeolocalizacaoTests" */ = {
 			isa = XCConfigurationList;
@@ -439,6 +436,7 @@
 				DDB6C8F61AA48A2E007A1EB2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -15,15 +15,15 @@
     BOOL atualizacao;
     MKCoordinateRegion region;
 }
+
+@property NSMutableArray *matchingItems;
 @property CLLocationManager * locationManager;
 @property MKPointAnnotation *pm;
 
 - (IBAction)pinar:(id)sender;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-
-- (IBAction)currentLocation:(id)sender;
-
+@property (weak, nonatomic) IBOutlet UITextField *endereco;
 
 @end
 
