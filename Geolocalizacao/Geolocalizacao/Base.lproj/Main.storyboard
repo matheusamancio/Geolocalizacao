@@ -109,6 +109,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="WXB-bo-G2k" secondAttribute="centerY" id="0W7-LM-ue0"/>
                             <constraint firstItem="H0L-gu-zi8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="117" id="3Fj-Ap-b9J"/>
@@ -225,6 +226,9 @@
                                 <exclude reference="pVg-a6-Yzj"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="kZw-hA-ml7" appends="YES" id="jtU-MS-sm6"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -234,6 +238,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="kZw-hA-ml7">
+                    <connections>
+                        <action selector="pinar:" destination="BYZ-38-t0r" id="MhR-4z-Cny"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="340.5" y="303.75"/>
         </scene>
