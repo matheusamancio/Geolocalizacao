@@ -16,12 +16,12 @@
     MKCoordinateRegion region;
 }
 @property CLLocationManager * locationManager;
-
-
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UITextField *endereco;
 
 - (IBAction)currentLocation:(id)sender;
-
+- (IBAction)getRoute:(id)sender;
+- (IBAction)getEndereco:(id)sender;
 
 @end
 

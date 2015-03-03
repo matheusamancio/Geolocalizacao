@@ -15,6 +15,8 @@
 
 @implementation ViewController
 
+CLPlacemark *thePlacemark;
+MKRoute *routeDetails;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +24,7 @@
     
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [_locationManager setDelegate:self];
+    [_mapView setDelegate:self];
      atualizacao = true;
     
     if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
@@ -61,4 +64,79 @@
 - (IBAction)currentLocation:(id)sender {
     [_mapView setRegion: region animated:YES];
 }
+
+- (IBAction)getRoute:(id)sender {
+    
+    MKDirectionsRequest *directionsRequest = [[MKDirectionsRequest alloc] init];
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:thePlacemark];
+    [directionsRequest setSource:[MKMapItem mapItemForCurrentLocation]];
+    [directionsRequest setDestination:[[MKMapItem alloc] initWithPlacemark:placemark]];
+    directionsRequest.transportType = MKDirectionsTransportTypeAutomobile;
+    MKDirections *directions = [[MKDirections alloc] initWithRequest:directionsRequest];
+    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+        if (error) {
+            NSLog(@"Error %@", error.description);
+        } else {
+            routeDetails = response.routes.lastObject;
+            [_mapView addOverlay:routeDetails.polyline level:MKOverlayLevelAboveRoads];
+        }
+    }];
+    
+}
+
+- (IBAction)getEndereco:(id)sender {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:_endereco.text completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        } else {
+            thePlacemark = [placemarks lastObject];
+            float spanX = 1.00725;
+            float spanY = 1.00725;
+            MKCoordinateRegion region2;
+            region2.center.latitude = thePlacemark.location.coordinate.latitude;
+            region2.center.longitude = thePlacemark.location.coordinate.longitude;
+            region2.span = MKCoordinateSpanMake(spanX, spanY);
+            [self.mapView setRegion:region2 animated:YES];
+            [self addAnnotation:thePlacemark];
+        }
+    }];
+}
+
+- (void)addAnnotation:(CLPlacemark *)placemark {
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    point.coordinate = CLLocationCoordinate2DMake(placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
+    point.title = [placemark.addressDictionary objectForKey:@"Street"];
+    point.subtitle = [placemark.addressDictionary objectForKey:@"City"];
+    [self.mapView addAnnotation:point];
+}
+
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+    MKPolylineRenderer  * routeLineRenderer = [[MKPolylineRenderer alloc] initWithPolyline:routeDetails.polyline];
+    routeLineRenderer.strokeColor = [UIColor blueColor];
+    routeLineRenderer.lineWidth = 5;
+    return routeLineRenderer;
+}
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    // If it's the user location, just return nil.
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    // Handle any custom annotations.
+    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
+        // Try to dequeue an existing pin view first.
+        MKPinAnnotationView *pinView = (MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
+        if (!pinView)
+        {
+            // If an existing pin view was not available, create one.
+            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
+            pinView.canShowCallout = YES;
+        } else {
+            pinView.annotation = annotation;
+        }
+        return pinView;
+    }
+    return nil;
+}
+
 @end
