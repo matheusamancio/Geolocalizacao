@@ -15,6 +15,8 @@
     BOOL atualizacao;
     MKCoordinateRegion region;
 }
+
+@property NSMutableArray *matchingItems;
 @property CLLocationManager * locationManager;
 @property MKPointAnnotation *pm;
 
@@ -22,10 +24,6 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITextField *endereco;
-
-- (IBAction)currentLocation:(id)sender;
-- (IBAction)getRoute:(id)sender;
-- (IBAction)getEndereco:(id)sender;
 
 @end
 

@@ -29,6 +29,7 @@ MKRoute *routeDetails;
     
     if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [_locationManager requestWhenInUseAuthorization];
+        _mapView.showsUserLocation = YES;
     }
    
     [_locationManager startUpdatingLocation];
@@ -78,6 +79,35 @@ MKRoute *routeDetails;
 
     
 }
+- (IBAction)pesquisar:(id)sender {
+    [sender resignFirstResponder];
+    [_mapView removeAnnotations:[_mapView annotations]];
+    [self performSearch];
+}
+
+-(void)performSearch {
+    MKLocalSearchRequest *request =
+    [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = _endereco.text;
+    request.region = _mapView.region;
+    _matchingItems = [[NSMutableArray alloc] init];
+    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
+    
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        
+    if (response.mapItems.count == 0)
+        NSLog(@"No Matches");
+    else
+        for (MKMapItem *item in response.mapItems) {
+            [_matchingItems addObject:item];
+            MKPointAnnotation *annotation =[[MKPointAnnotation alloc]init];
+            annotation.coordinate = item.placemark.coordinate;
+            annotation.title = item.name;
+            [_mapView addAnnotation:annotation];
+        }
+    }];
+}
+
 - (IBAction)getRoute:(id)sender {
     
     
