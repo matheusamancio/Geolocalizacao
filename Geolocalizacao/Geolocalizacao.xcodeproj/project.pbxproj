@@ -16,6 +16,8 @@
 		DDB6C8EE1AA48A2E007A1EB2 /* GeolocalizacaoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB6C8ED1AA48A2E007A1EB2 /* GeolocalizacaoTests.m */; };
 		DDB6C8F81AA48A3F007A1EB2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB6C8F71AA48A3F007A1EB2 /* MapKit.framework */; };
 		DDB6C8FA1AA48A65007A1EB2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB6C8F91AA48A65007A1EB2 /* CoreLocation.framework */; };
+		EC2930E81AA7910D0001EA0F /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2930E71AA7910D0001EA0F /* Usuario.m */; };
+		EC2930EB1AA7914D0001EA0F /* CadastroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2930EA1AA7914D0001EA0F /* CadastroViewController.m */; };
 		EC3C4EDD1AA747FB00027F6E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3C4EDC1AA747FB00027F6E /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,10 @@
 		DDB6C8ED1AA48A2E007A1EB2 /* GeolocalizacaoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeolocalizacaoTests.m; sourceTree = "<group>"; };
 		DDB6C8F71AA48A3F007A1EB2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DDB6C8F91AA48A65007A1EB2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EC2930E61AA7910D0001EA0F /* Usuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Usuario.h; sourceTree = "<group>"; };
+		EC2930E71AA7910D0001EA0F /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = "<group>"; };
+		EC2930E91AA7914D0001EA0F /* CadastroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroViewController.h; sourceTree = "<group>"; };
+		EC2930EA1AA7914D0001EA0F /* CadastroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadastroViewController.m; sourceTree = "<group>"; };
 		EC3C4EDB1AA747FB00027F6E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		EC3C4EDC1AA747FB00027F6E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +103,10 @@
 				DDB6C8D81AA48A2E007A1EB2 /* ViewController.h */,
 				DDB6C8D91AA48A2E007A1EB2 /* ViewController.m */,
 				DDB6C8DB1AA48A2E007A1EB2 /* Main.storyboard */,
+				EC2930E91AA7914D0001EA0F /* CadastroViewController.h */,
+				EC2930EA1AA7914D0001EA0F /* CadastroViewController.m */,
+				EC2930E61AA7910D0001EA0F /* Usuario.h */,
+				EC2930E71AA7910D0001EA0F /* Usuario.m */,
 				EC3C4EDB1AA747FB00027F6E /* LoginViewController.h */,
 				EC3C4EDC1AA747FB00027F6E /* LoginViewController.m */,
 				DDB6C8DE1AA48A2E007A1EB2 /* Images.xcassets */,
@@ -237,6 +247,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC2930E81AA7910D0001EA0F /* Usuario.m in Sources */,
+				EC2930EB1AA7914D0001EA0F /* CadastroViewController.m in Sources */,
 				EC3C4EDD1AA747FB00027F6E /* LoginViewController.m in Sources */,
 				DDB6C8DA1AA48A2E007A1EB2 /* ViewController.m in Sources */,
 				DDB6C8D71AA48A2E007A1EB2 /* AppDelegate.m in Sources */,

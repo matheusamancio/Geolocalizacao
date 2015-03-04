@@ -37,7 +37,10 @@
     }
    
     [_locationManager startUpdatingLocation];
-    
+    [_searchBar setClipsToBounds:YES];
+    [_searchBar setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
+//    [_searchBar ]
+//    [[UISearchBar appearance] setClipsToBounds:YES];
     _target.layer.borderWidth = 1.0f;
     pesquisouLocations = NO;
     // Do any additional setup after loading the view, typically from a nib.
