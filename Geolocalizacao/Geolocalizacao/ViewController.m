@@ -183,4 +183,12 @@
     return nil;
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+
+{
+    
+    [ self.endereco resignFirstResponder];
+    
+}
+
 @end
