@@ -11,11 +11,11 @@
 #import "CoreLocation/CoreLocation.h"
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
-{
-    BOOL atualizacao;
-    MKCoordinateRegion region;
-}
 
+@property BOOL atualizacao;
+@property MKCoordinateRegion region;
+@property CLPlacemark *thePlacemark;
+@property MKRoute *routeDetails;
 @property NSMutableArray *matchingItems;
 @property CLLocationManager * locationManager;
 @property MKPointAnnotation *pm;

@@ -7,16 +7,17 @@
 //
 
 #import "ViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *target;
 
 @end
 
 @implementation ViewController
 
-CLPlacemark *thePlacemark;
-MKRoute *routeDetails;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,7 +26,7 @@ MKRoute *routeDetails;
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [_locationManager setDelegate:self];
     [_mapView setDelegate:self];
-     atualizacao = true;
+     _atualizacao = true;
     
     if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
         [_locationManager requestWhenInUseAuthorization];
@@ -33,6 +34,8 @@ MKRoute *routeDetails;
     }
    
     [_locationManager startUpdatingLocation];
+    
+    _target.layer.borderWidth = 1.0f;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -41,13 +44,13 @@ MKRoute *routeDetails;
     
     NSLog(@"%@", [locations lastObject]);
     CLLocationCoordinate2D loc = [[locations lastObject] coordinate];
-    region= MKCoordinateRegionMakeWithDistance(loc, 250, 250);
+    _region = MKCoordinateRegionMakeWithDistance(loc, 250, 250);
     
    
     
-    if (atualizacao) {
-        [_mapView setRegion: region animated:YES];
-        atualizacao = false;
+    if (_atualizacao) {
+        [_mapView setRegion: _region animated:YES];
+        _atualizacao = false;
     }
 }
 
@@ -63,7 +66,7 @@ MKRoute *routeDetails;
 
 
 - (IBAction)currentLocation:(id)sender {
-    [_mapView setRegion: region animated:YES];
+    [_mapView setRegion:_region animated:YES];
 }
 
 
@@ -108,7 +111,7 @@ MKRoute *routeDetails;
 
 - (IBAction)getRoute:(id)sender {
     MKDirectionsRequest *directionsRequest = [[MKDirectionsRequest alloc] init];
-    MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:thePlacemark];
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:_thePlacemark];
     [directionsRequest setSource:[MKMapItem mapItemForCurrentLocation]];
     [directionsRequest setDestination:[[MKMapItem alloc] initWithPlacemark:placemark]];
     directionsRequest.transportType = MKDirectionsTransportTypeAutomobile;
@@ -117,11 +120,10 @@ MKRoute *routeDetails;
         if (error) {
             NSLog(@"Error %@", error.description);
         } else {
-            routeDetails = response.routes.lastObject;
-            [_mapView addOverlay:routeDetails.polyline level:MKOverlayLevelAboveRoads];
+            _routeDetails = response.routes.lastObject;
+            [_mapView addOverlay:_routeDetails.polyline level:MKOverlayLevelAboveRoads];
         }
     }];
-    
 }
 
 - (IBAction)getEndereco:(id)sender {
@@ -133,15 +135,15 @@ MKRoute *routeDetails;
         if (error) {
             NSLog(@"%@", error);
         } else {
-            thePlacemark = [placemarks lastObject];
+            _thePlacemark = [placemarks lastObject];
             float spanX = 1.00725;
             float spanY = 1.00725;
             MKCoordinateRegion region2;
-            region2.center.latitude = thePlacemark.location.coordinate.latitude;
-            region2.center.longitude = thePlacemark.location.coordinate.longitude;
+            region2.center.latitude = _thePlacemark.location.coordinate.latitude;
+            region2.center.longitude = _thePlacemark.location.coordinate.longitude;
             region2.span = MKCoordinateSpanMake(spanX, spanY);
-            [self.mapView setRegion:region2 animated:YES];
-            [self addAnnotation:thePlacemark];
+            [_mapView setRegion:region2 animated:YES];
+            [self addAnnotation:_thePlacemark];
         }
     }];
 }
@@ -155,7 +157,7 @@ MKRoute *routeDetails;
 }
 
 -(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
-    MKPolylineRenderer  * routeLineRenderer = [[MKPolylineRenderer alloc] initWithPolyline:routeDetails.polyline];
+    MKPolylineRenderer  * routeLineRenderer = [[MKPolylineRenderer alloc] initWithPolyline:_routeDetails.polyline];
     routeLineRenderer.strokeColor = [UIColor blueColor];
     routeLineRenderer.lineWidth = 5;
     return routeLineRenderer;
