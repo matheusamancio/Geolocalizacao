@@ -34,7 +34,10 @@
     }
    
     [_locationManager startUpdatingLocation];
-    
+    [_searchBar setClipsToBounds:YES];
+    [_searchBar setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
+//    [_searchBar ]
+//    [[UISearchBar appearance] setClipsToBounds:YES];
     _target.layer.borderWidth = 1.0f;
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -183,9 +186,7 @@
     return nil;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-
-{
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     [ self.endereco resignFirstResponder];
     
