@@ -16,6 +16,7 @@
 		DDB6C8EE1AA48A2E007A1EB2 /* GeolocalizacaoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB6C8ED1AA48A2E007A1EB2 /* GeolocalizacaoTests.m */; };
 		DDB6C8F81AA48A3F007A1EB2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB6C8F71AA48A3F007A1EB2 /* MapKit.framework */; };
 		DDB6C8FA1AA48A65007A1EB2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB6C8F91AA48A65007A1EB2 /* CoreLocation.framework */; };
+		EC3C4EDD1AA747FB00027F6E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3C4EDC1AA747FB00027F6E /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		DDB6C8ED1AA48A2E007A1EB2 /* GeolocalizacaoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeolocalizacaoTests.m; sourceTree = "<group>"; };
 		DDB6C8F71AA48A3F007A1EB2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DDB6C8F91AA48A65007A1EB2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EC3C4EDB1AA747FB00027F6E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		EC3C4EDC1AA747FB00027F6E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 				DDB6C8D81AA48A2E007A1EB2 /* ViewController.h */,
 				DDB6C8D91AA48A2E007A1EB2 /* ViewController.m */,
 				DDB6C8DB1AA48A2E007A1EB2 /* Main.storyboard */,
+				EC3C4EDB1AA747FB00027F6E /* LoginViewController.h */,
+				EC3C4EDC1AA747FB00027F6E /* LoginViewController.m */,
 				DDB6C8DE1AA48A2E007A1EB2 /* Images.xcassets */,
 				DDB6C8E01AA48A2E007A1EB2 /* LaunchScreen.xib */,
 				DDB6C8D11AA48A2E007A1EB2 /* Supporting Files */,
@@ -232,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC3C4EDD1AA747FB00027F6E /* LoginViewController.m in Sources */,
 				DDB6C8DA1AA48A2E007A1EB2 /* ViewController.m in Sources */,
 				DDB6C8D71AA48A2E007A1EB2 /* AppDelegate.m in Sources */,
 				DDB6C8D41AA48A2E007A1EB2 /* main.m in Sources */,
@@ -359,6 +365,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Geolocalizacao/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -369,6 +376,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Geolocalizacao/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
