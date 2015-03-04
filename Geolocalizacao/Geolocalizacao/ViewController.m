@@ -76,8 +76,6 @@ MKRoute *routeDetails;
     pm.coordinate = tapPoint;
     [self.mapView removeAnnotations: [self.mapView annotations]];
     [self.mapView addAnnotation:pm];
-
-    
 }
 - (IBAction)pesquisar:(id)sender {
     [sender resignFirstResponder];
@@ -109,8 +107,6 @@ MKRoute *routeDetails;
 }
 
 - (IBAction)getRoute:(id)sender {
-    
-    
     MKDirectionsRequest *directionsRequest = [[MKDirectionsRequest alloc] init];
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:thePlacemark];
     [directionsRequest setSource:[MKMapItem mapItemForCurrentLocation]];
@@ -129,6 +125,9 @@ MKRoute *routeDetails;
 }
 
 - (IBAction)getEndereco:(id)sender {
+    if (routeDetails!=nil) {
+        [self limparRota];
+    }
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder geocodeAddressString:_endereco.text completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
@@ -166,7 +165,7 @@ MKRoute *routeDetails;
     // If it's the user location, just return nil.
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
-    // Handle any custom annotations.
+    // Handle any custom annotationss.
     if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
         // Try to dequeue an existing pin view first.
         MKPinAnnotationView *pinView = (MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
@@ -181,6 +180,10 @@ MKRoute *routeDetails;
         return pinView;
     }
     return nil;
+}
+
+- (void)limparRota {
+    [self.mapView removeOverlay:routeDetails.polyline];
 }
 
 @end
