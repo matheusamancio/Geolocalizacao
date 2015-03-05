@@ -15,7 +15,10 @@
 
 @end
 
-@implementation ViewController
+@implementation ViewController {
+    bool pesquisouLocations;
+    bool pesquisandoLocations;
+}
 
 
 
@@ -39,8 +42,10 @@
 //    [_searchBar ]
 //    [[UISearchBar appearance] setClipsToBounds:YES];
     _target.layer.borderWidth = 1.0f;
+    pesquisouLocations = NO;
     // Do any additional setup after loading the view, typically from a nib.
 }
+
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
@@ -55,6 +60,17 @@
         [_mapView setRegion: _region animated:YES];
         _atualizacao = false;
     }
+    
+    if (!pesquisandoLocations) {
+        pesquisandoLocations = YES;
+        [self getHotels:_region];
+        pesquisandoLocations = NO;
+    }
+    
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.locationManager stopUpdatingLocation];
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -69,7 +85,7 @@
 
 
 - (IBAction)currentLocation:(id)sender {
-    [_mapView setRegion:_region animated:YES];
+    [self.locationManager startUpdatingLocation];
 }
 
 
@@ -82,8 +98,6 @@
     pm.coordinate = tapPoint;
     [self.mapView removeAnnotations: [self.mapView annotations]];
     [self.mapView addAnnotation:pm];
-
-    
 }
 - (IBAction)pesquisar:(id)sender {
     [sender resignFirstResponder];
@@ -91,9 +105,35 @@
     [self performSearch];
 }
 
+- (void)getHotels:(MKCoordinateRegion)reg {
+    
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = @"hotel";
+    request.region = reg;
+    _matchingItems = [[NSMutableArray alloc] init];
+    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
+    
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        
+        if (response.mapItems.count == 0)
+            NSLog(@"No Matches");
+        else
+            for (MKMapItem *item in response.mapItems) {
+                [_matchingItems addObject:item];
+                MKPointAnnotation *annotation =[[MKPointAnnotation alloc]init];
+                annotation.coordinate = item.placemark.coordinate;
+                annotation.title = item.name;
+                [_mapView addAnnotation:annotation];
+            }
+    }];
+    
+    [self.mapView setRegion:reg animated:YES];
+    pesquisouLocations = YES;
+
+}
+
 -(void)performSearch {
-    MKLocalSearchRequest *request =
-    [[MKLocalSearchRequest alloc] init];
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = _endereco.text;
     request.region = _mapView.region;
     _matchingItems = [[NSMutableArray alloc] init];
@@ -132,6 +172,9 @@
 }
 
 - (IBAction)getEndereco:(id)sender {
+    if (_routeDetails!=nil) {
+        [self limparRota];
+    }
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder geocodeAddressString:_endereco.text completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
@@ -169,7 +212,7 @@
     // If it's the user location, just return nil.
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
-    // Handle any custom annotations.
+    // Handle any custom annotationss.
     if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
         // Try to dequeue an existing pin view first.
         MKPinAnnotationView *pinView = (MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
@@ -186,10 +229,8 @@
     return nil;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    [ self.endereco resignFirstResponder];
-    
+- (void)limparRota {
+    [self.mapView removeOverlay:_routeDetails.polyline];
 }
 
 @end
