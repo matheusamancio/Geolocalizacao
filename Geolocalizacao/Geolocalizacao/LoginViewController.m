@@ -47,6 +47,12 @@
     }
 }
 
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.loginTextField resignFirstResponder];
+    [self.senhaTextField resignFirstResponder];
+}
 /*
 #pragma mark - Navigation
 
