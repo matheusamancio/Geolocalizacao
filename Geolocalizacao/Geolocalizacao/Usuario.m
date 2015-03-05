@@ -21,7 +21,7 @@
         _descricao = descricao;
         _usuario = usuario;
         _senha = senha;
-        _index = -1;
+        _endereco = nil;
     }
     return self;
 }

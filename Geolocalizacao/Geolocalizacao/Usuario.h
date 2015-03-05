@@ -19,7 +19,7 @@
 @property NSString *descricao;
 @property NSString *usuario;
 @property NSString *senha;
-@property NSInteger index;
+@property NSString *endereco;
 
 - (instancetype)initWithNome:(NSString *)nome eIdade:(NSString *)idade eTelefone:(NSString *)telefone ePais:(NSString *)pais eFoto:(NSString *)foto eDescricao:(NSString *)descricao eUsuario:(NSString *)usuario eSenha:(NSString *)senha;
 

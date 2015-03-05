@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "CoreLocation/CoreLocation.h"
 
-@interface ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>
+@interface ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate>
 
 @property BOOL atualizacao;
 @property MKCoordinateRegion region;

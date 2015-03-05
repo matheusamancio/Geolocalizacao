@@ -22,7 +22,7 @@
     _idadeLabel.text = [_usuarios.usuarios[_usuarios.index] idade];
     _telefoneLabel.text = [_usuarios.usuarios[_usuarios.index] telefone];
     _paisLabel.text = [_usuarios.usuarios[_usuarios.index] pais];
-    _descricaoTextView.text = [_usuarios.usuarios[_usuarios.index] descricao];
+    _descricaoTextView.text = [_usuarios.usuarios[_usuarios.index] endereco];
     // Do any additional setup after loading the view.
 }
 

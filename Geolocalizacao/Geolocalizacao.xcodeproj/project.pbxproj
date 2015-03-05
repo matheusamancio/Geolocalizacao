@@ -21,6 +21,9 @@
 		EC2930EE1AA7A5260001EA0F /* ListaUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2930ED1AA7A5260001EA0F /* ListaUsuario.m */; };
 		EC3BAEA81AA7EB7900D9E356 /* PerfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3BAEA71AA7EB7900D9E356 /* PerfilViewController.m */; };
 		EC3C4EDD1AA747FB00027F6E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3C4EDC1AA747FB00027F6E /* LoginViewController.m */; };
+		EC3E6C2D1AA89BD100290919 /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E6C2C1AA89BD100290919 /* InfoViewController.m */; };
+		EC3E6C301AA8A33D00290919 /* CadastroCasaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E6C2F1AA8A33D00290919 /* CadastroCasaViewController.m */; };
+		EC3E6C331AA8CA0C00290919 /* AnimatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3E6C321AA8CA0C00290919 /* AnimatedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,12 @@
 		EC3BAEA71AA7EB7900D9E356 /* PerfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfilViewController.m; sourceTree = "<group>"; };
 		EC3C4EDB1AA747FB00027F6E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		EC3C4EDC1AA747FB00027F6E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		EC3E6C2B1AA89BD100290919 /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		EC3E6C2C1AA89BD100290919 /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		EC3E6C2E1AA8A33D00290919 /* CadastroCasaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroCasaViewController.h; sourceTree = "<group>"; };
+		EC3E6C2F1AA8A33D00290919 /* CadastroCasaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadastroCasaViewController.m; sourceTree = "<group>"; };
+		EC3E6C311AA8CA0C00290919 /* AnimatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedViewController.h; sourceTree = "<group>"; };
+		EC3E6C321AA8CA0C00290919 /* AnimatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +118,10 @@
 				DDB6C8D81AA48A2E007A1EB2 /* ViewController.h */,
 				DDB6C8D91AA48A2E007A1EB2 /* ViewController.m */,
 				DDB6C8DB1AA48A2E007A1EB2 /* Main.storyboard */,
+				EC3E6C2E1AA8A33D00290919 /* CadastroCasaViewController.h */,
+				EC3E6C2F1AA8A33D00290919 /* CadastroCasaViewController.m */,
+				EC3E6C2B1AA89BD100290919 /* InfoViewController.h */,
+				EC3E6C2C1AA89BD100290919 /* InfoViewController.m */,
 				EC3BAEA61AA7EB7900D9E356 /* PerfilViewController.h */,
 				EC3BAEA71AA7EB7900D9E356 /* PerfilViewController.m */,
 				EC2930E91AA7914D0001EA0F /* CadastroViewController.h */,
@@ -119,6 +132,8 @@
 				EC2930E71AA7910D0001EA0F /* Usuario.m */,
 				EC3C4EDB1AA747FB00027F6E /* LoginViewController.h */,
 				EC3C4EDC1AA747FB00027F6E /* LoginViewController.m */,
+				EC3E6C311AA8CA0C00290919 /* AnimatedViewController.h */,
+				EC3E6C321AA8CA0C00290919 /* AnimatedViewController.m */,
 				DDB6C8DE1AA48A2E007A1EB2 /* Images.xcassets */,
 				DDB6C8E01AA48A2E007A1EB2 /* LaunchScreen.xib */,
 				DDB6C8D11AA48A2E007A1EB2 /* Supporting Files */,
@@ -258,12 +273,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC2930EE1AA7A5260001EA0F /* ListaUsuario.m in Sources */,
+				EC3E6C301AA8A33D00290919 /* CadastroCasaViewController.m in Sources */,
 				EC2930E81AA7910D0001EA0F /* Usuario.m in Sources */,
+				EC3E6C2D1AA89BD100290919 /* InfoViewController.m in Sources */,
 				EC3BAEA81AA7EB7900D9E356 /* PerfilViewController.m in Sources */,
 				EC2930EB1AA7914D0001EA0F /* CadastroViewController.m in Sources */,
 				EC3C4EDD1AA747FB00027F6E /* LoginViewController.m in Sources */,
 				DDB6C8DA1AA48A2E007A1EB2 /* ViewController.m in Sources */,
 				DDB6C8D71AA48A2E007A1EB2 /* AppDelegate.m in Sources */,
+				EC3E6C331AA8CA0C00290919 /* AnimatedViewController.m in Sources */,
 				DDB6C8D41AA48A2E007A1EB2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

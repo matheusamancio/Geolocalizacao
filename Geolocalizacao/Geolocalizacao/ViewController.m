@@ -29,6 +29,7 @@
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [_locationManager setDelegate:self];
     [_mapView setDelegate:self];
+    [_searchBar setDelegate:self];
      _atualizacao = true;
     
     if ([_locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
@@ -39,8 +40,6 @@
     [_locationManager startUpdatingLocation];
     [_searchBar setClipsToBounds:YES];
     [_searchBar setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
-//    [_searchBar ]
-//    [[UISearchBar appearance] setClipsToBounds:YES];
     _target.layer.borderWidth = 1.0f;
     pesquisouLocations = NO;
     // Do any additional setup after loading the view, typically from a nib.
@@ -60,13 +59,6 @@
         [_mapView setRegion: _region animated:YES];
         _atualizacao = false;
     }
-    
-    if (!pesquisandoLocations) {
-        pesquisandoLocations = YES;
-        [self getHotels:_region];
-        pesquisandoLocations = NO;
-    }
-    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -88,161 +80,50 @@
     [self.locationManager startUpdatingLocation];
 }
 
-
 - (IBAction)pinar:(id)sender {
-    CGPoint point = [sender locationInView:self.mapView];
-    CLLocationCoordinate2D tapPoint = [self.mapView convertPoint:point toCoordinateFromView:self.view];
+    CGPoint point = [sender locationInView:_mapView];
+    CLLocationCoordinate2D tapPoint = [_mapView convertPoint:point toCoordinateFromView:self.view];
     
     MKPointAnnotation *pm = [[MKPointAnnotation alloc] init];
     
     pm.coordinate = tapPoint;
-    [self.mapView removeAnnotations: [self.mapView annotations]];
+    [self.mapView removeAnnotations: [_mapView annotations]];
     [self.mapView addAnnotation:pm];
-    pm.title = @"mackmobile";
+    pm.title = _thePlacemark.thoroughfare;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
 
 {
-    
-    
-    
-    //fazendo os botões e animação do pino
-    
-    //if it's user location, return nil
-    
     if ([annotation isKindOfClass:[MKUserLocation class]])
         
         return nil;
     
-    
-    
-    //try to dequeue an existing pin view first
-    
     static NSString* AnnotationIdentifier = @"AnnotationIdentifier";
-    
-    
-    
     MKPinAnnotationView* pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
-    
     pinView.animatesDrop = YES;
-    
     pinView.canShowCallout = YES;
-    
     pinView.pinColor = MKPinAnnotationColorRed;
     
-    
-    
-    
-    
-    //button on the right for popup for pins
-    
     UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    
     [rightButton setTitle:annotation.title forState:UIControlStateNormal];
-    
-    [rightButton addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [rightButton addTarget:self action:@selector(showInfo) forControlEvents:UIControlEventTouchUpInside];
     pinView.rightCalloutAccessoryView = rightButton;
     
-    
-    
-    //zoom button on the left of popup for pins
-    
     UIButton *btnTwo = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    
     btnTwo.frame = CGRectMake(0, 0, 20, 20);
-    
     UIImage *btnImage = [UIImage imageNamed:@"garage-25"];
-    
     [btnTwo setImage:btnImage forState:UIControlStateNormal];
     
     
     [btnTwo setTitle:annotation.title forState:UIControlStateNormal];
-    
-    [btnTwo addTarget:self action:@selector(zoomToLocation:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [btnTwo addTarget:self action:@selector(rota) forControlEvents:UIControlEventTouchUpInside];
     pinView.leftCalloutAccessoryView = btnTwo;
     
-    
-    
     return pinView;
-    
 }
 
-- (IBAction)pesquisar:(id)sender {
-    [sender resignFirstResponder];
-    [_mapView removeAnnotations:[_mapView annotations]];
-    [self performSearch];
-}
-
-- (void)getHotels:(MKCoordinateRegion)reg {
-    
-    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = @"hotel";
-    request.region = reg;
-    _matchingItems = [[NSMutableArray alloc] init];
-    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
-    
-    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-        
-        if (response.mapItems.count == 0)
-            NSLog(@"No Matches");
-        else
-            for (MKMapItem *item in response.mapItems) {
-                [_matchingItems addObject:item];
-                MKPointAnnotation *annotation =[[MKPointAnnotation alloc]init];
-                annotation.coordinate = item.placemark.coordinate;
-                annotation.title = item.name;
-                [_mapView addAnnotation:annotation];
-            }
-    }];
-    
-    [self.mapView setRegion:reg animated:YES];
-    pesquisouLocations = YES;
-
-}
-
--(void)performSearch {
-    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = _endereco.text;
-    request.region = _mapView.region;
-    _matchingItems = [[NSMutableArray alloc] init];
-    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
-    
-    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-        
-    if (response.mapItems.count == 0)
-        NSLog(@"No Matches");
-    else
-        for (MKMapItem *item in response.mapItems) {
-            [_matchingItems addObject:item];
-            MKPointAnnotation *annotation =[[MKPointAnnotation alloc]init];
-            annotation.coordinate = item.placemark.coordinate;
-            annotation.title = item.name;
-            [_mapView addAnnotation:annotation];
-        }
-    }];
-}
-
-- (IBAction)getRoute:(id)sender {
-    MKDirectionsRequest *directionsRequest = [[MKDirectionsRequest alloc] init];
-    MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:_thePlacemark];
-    [directionsRequest setSource:[MKMapItem mapItemForCurrentLocation]];
-    [directionsRequest setDestination:[[MKMapItem alloc] initWithPlacemark:placemark]];
-    directionsRequest.transportType = MKDirectionsTransportTypeAutomobile;
-    MKDirections *directions = [[MKDirections alloc] initWithRequest:directionsRequest];
-    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
-        if (error) {
-            NSLog(@"Error %@", error.description);
-        } else {
-            _routeDetails = response.routes.lastObject;
-            [_mapView addOverlay:_routeDetails.polyline level:MKOverlayLevelAboveRoads];
-        }
-    }];
-}
-
-- (IBAction)getEndereco:(id)sender {
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     if (_routeDetails!=nil) {
         [self limparRota];
     }
@@ -260,6 +141,24 @@
             region2.span = MKCoordinateSpanMake(spanX, spanY);
             [_mapView setRegion:region2 animated:YES];
             [self addAnnotation:_thePlacemark];
+        }
+        [self getRoute];
+    }];
+}
+
+- (void)getRoute {
+    MKDirectionsRequest *directionsRequest = [[MKDirectionsRequest alloc] init];
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:_thePlacemark];
+    [directionsRequest setSource:[MKMapItem mapItemForCurrentLocation]];
+    [directionsRequest setDestination:[[MKMapItem alloc] initWithPlacemark:placemark]];
+    directionsRequest.transportType = MKDirectionsTransportTypeAutomobile;
+    MKDirections *directions = [[MKDirections alloc] initWithRequest:directionsRequest];
+    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {
+        if (error) {
+            NSLog(@"Error %@", error.description);
+        } else {
+            _routeDetails = response.routes.lastObject;
+            [_mapView addOverlay:_routeDetails.polyline level:MKOverlayLevelAboveRoads];
         }
     }];
 }
@@ -279,29 +178,16 @@
     return routeLineRenderer;
 }
 
-//-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-//    // If it's the user location, just return nil.
-//    if ([annotation isKindOfClass:[MKUserLocation class]])
-//        return nil;
-//    // Handle any custom annotationss.
-//    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
-//        // Try to dequeue an existing pin view first.
-//        MKPinAnnotationView *pinView = (MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
-//        if (!pinView)
-//        {
-//            // If an existing pin view was not available, create one.
-//            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
-//            pinView.canShowCallout = YES;
-//        } else {
-//            pinView.annotation = annotation;
-//        }
-//        return pinView;
-//    }
-//    return nil;
-//}
+- (void)rota {
+}
 
 - (void)limparRota {
     [self.mapView removeOverlay:_routeDetails.polyline];
+}
+
+- (void)showInfo {
+    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"showInfo"];
+    [self presentViewController: viewController animated:YES completion:nil];
 }
 
 @end

@@ -10,53 +10,25 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoCouchsearch" translatesAutoresizingMaskIntoConstraints="NO" id="Kdh-KR-DZE">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="couchsearch2" translatesAutoresizingMaskIntoConstraints="NO" id="nFA-RY-Qmy">
+                    <rect key="frame" x="120" y="221" width="241" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="480" id="1Ds-3W-cgm"/>
-                        <constraint firstAttribute="height" constant="480" id="U5R-H5-kQ4"/>
+                        <constraint firstAttribute="height" constant="38" id="pPe-pd-ZEa"/>
+                        <constraint firstAttribute="width" constant="241" id="q0E-g2-7cp"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="1Ds-3W-cgm"/>
-                            <exclude reference="U5R-H5-kQ4"/>
-                        </mask>
-                    </variation>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.97254901959999995" green="0.23921568630000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="Kdh-KR-DZE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2rt-BR-feu"/>
-                <constraint firstItem="Kdh-KR-DZE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="32i-9U-4g5"/>
-                <constraint firstAttribute="bottom" secondItem="Kdh-KR-DZE" secondAttribute="bottom" id="5LG-9g-PPl"/>
-                <constraint firstAttribute="bottom" secondItem="Kdh-KR-DZE" secondAttribute="bottom" id="7Ll-At-bfN"/>
-                <constraint firstItem="Kdh-KR-DZE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CuQ-6O-agR"/>
-                <constraint firstItem="Kdh-KR-DZE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UXq-f5-1I6"/>
-                <constraint firstAttribute="trailing" secondItem="Kdh-KR-DZE" secondAttribute="trailing" id="YVq-ef-Xkg"/>
-                <constraint firstAttribute="trailing" secondItem="Kdh-KR-DZE" secondAttribute="trailing" id="ZDe-Su-WVl"/>
-                <constraint firstAttribute="trailing" secondItem="Kdh-KR-DZE" secondAttribute="trailing" id="bDg-ra-aOo"/>
-                <constraint firstAttribute="bottom" secondItem="Kdh-KR-DZE" secondAttribute="bottom" id="bbZ-Me-gLA"/>
-                <constraint firstItem="Kdh-KR-DZE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bwa-es-JxX"/>
-                <constraint firstItem="Kdh-KR-DZE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cNn-ew-r6H"/>
+                <constraint firstAttribute="centerY" secondItem="nFA-RY-Qmy" secondAttribute="centerY" constant="0.5" id="7ed-c0-Fbh"/>
+                <constraint firstAttribute="centerX" secondItem="nFA-RY-Qmy" secondAttribute="centerX" constant="-0.5" id="XXM-tj-YsT"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="2rt-BR-feu"/>
-                    <exclude reference="32i-9U-4g5"/>
-                    <exclude reference="5LG-9g-PPl"/>
-                    <exclude reference="7Ll-At-bfN"/>
-                    <exclude reference="UXq-f5-1I6"/>
-                    <exclude reference="YVq-ef-Xkg"/>
-                    <exclude reference="ZDe-Su-WVl"/>
-                    <exclude reference="bwa-es-JxX"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
     <resources>
-        <image name="logoCouchsearch" width="1024" height="1024"/>
+        <image name="couchsearch2" width="517" height="82"/>
     </resources>
 </document>

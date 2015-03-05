@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *loginTextField;
 @property (weak, nonatomic) IBOutlet UITextField *senhaTextField;
 @property ListaUsuario *usuarios;
+@property (weak, nonatomic) IBOutlet UIImageView *imagemLogo;
 
 
 @end

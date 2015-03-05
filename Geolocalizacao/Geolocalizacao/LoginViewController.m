@@ -20,12 +20,17 @@
     [_usuarios addObjects];
     _singInButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     _loginButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    [self setNeedsStatusBarAppearanceUpdate];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (IBAction)botaoLogIn:(id)sender {
