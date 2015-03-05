@@ -98,7 +98,78 @@
     pm.coordinate = tapPoint;
     [self.mapView removeAnnotations: [self.mapView annotations]];
     [self.mapView addAnnotation:pm];
+    pm.title = @"mackmobile";
 }
+
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+
+{
+    
+    
+    
+    //fazendo os botões e animação do pino
+    
+    //if it's user location, return nil
+    
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        
+        return nil;
+    
+    
+    
+    //try to dequeue an existing pin view first
+    
+    static NSString* AnnotationIdentifier = @"AnnotationIdentifier";
+    
+    
+    
+    MKPinAnnotationView* pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
+    
+    pinView.animatesDrop = YES;
+    
+    pinView.canShowCallout = YES;
+    
+    pinView.pinColor = MKPinAnnotationColorRed;
+    
+    
+    
+    
+    
+    //button on the right for popup for pins
+    
+    UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    
+    [rightButton setTitle:annotation.title forState:UIControlStateNormal];
+    
+    [rightButton addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
+    
+    pinView.rightCalloutAccessoryView = rightButton;
+    
+    
+    
+    //zoom button on the left of popup for pins
+    
+    UIButton *btnTwo = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    btnTwo.frame = CGRectMake(0, 0, 20, 20);
+    
+    UIImage *btnImage = [UIImage imageNamed:@"garage-25"];
+    
+    [btnTwo setImage:btnImage forState:UIControlStateNormal];
+    
+    
+    [btnTwo setTitle:annotation.title forState:UIControlStateNormal];
+    
+    [btnTwo addTarget:self action:@selector(zoomToLocation:) forControlEvents:UIControlEventTouchUpInside];
+    
+    pinView.leftCalloutAccessoryView = btnTwo;
+    
+    
+    
+    return pinView;
+    
+}
+
 - (IBAction)pesquisar:(id)sender {
     [sender resignFirstResponder];
     [_mapView removeAnnotations:[_mapView annotations]];
@@ -208,26 +279,26 @@
     return routeLineRenderer;
 }
 
--(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    // If it's the user location, just return nil.
-    if ([annotation isKindOfClass:[MKUserLocation class]])
-        return nil;
-    // Handle any custom annotationss.
-    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
-        // Try to dequeue an existing pin view first.
-        MKPinAnnotationView *pinView = (MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
-        if (!pinView)
-        {
-            // If an existing pin view was not available, create one.
-            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
-            pinView.canShowCallout = YES;
-        } else {
-            pinView.annotation = annotation;
-        }
-        return pinView;
-    }
-    return nil;
-}
+//-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+//    // If it's the user location, just return nil.
+//    if ([annotation isKindOfClass:[MKUserLocation class]])
+//        return nil;
+//    // Handle any custom annotationss.
+//    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
+//        // Try to dequeue an existing pin view first.
+//        MKPinAnnotationView *pinView = (MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
+//        if (!pinView)
+//        {
+//            // If an existing pin view was not available, create one.
+//            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
+//            pinView.canShowCallout = YES;
+//        } else {
+//            pinView.annotation = annotation;
+//        }
+//        return pinView;
+//    }
+//    return nil;
+//}
 
 - (void)limparRota {
     [self.mapView removeOverlay:_routeDetails.polyline];
