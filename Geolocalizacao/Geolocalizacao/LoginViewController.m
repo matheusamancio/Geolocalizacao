@@ -18,6 +18,8 @@
     [super viewDidLoad];
     _usuarios = [ListaUsuario sharedInstance];
     [_usuarios addObjects];
+    _singInButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    _loginButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     // Do any additional setup after loading the view.
 }
 
