@@ -10,7 +10,7 @@
 
 @implementation Usuario
 
-- (instancetype)initWithNome:(NSString *)nome eIdade:(NSInteger)idade eTelefone:(NSString *)telefone ePais:(NSString *)pais eFoto:(UIImage *)foto eDescricao:(NSString *)descricao {
+- (instancetype)initWithNome:(NSString *)nome eIdade:(NSString *)idade eTelefone:(NSString *)telefone ePais:(NSString *)pais eFoto:(NSString *)foto eDescricao:(NSString *)descricao eUsuario:(NSString *)usuario eSenha:(NSString *)senha {
     self = [super init];
     if (self) {
         _nome = nome;
@@ -19,6 +19,9 @@
         _pais = pais;
         _foto = foto;
         _descricao = descricao;
+        _usuario = usuario;
+        _senha = senha;
+        _index = -1;
     }
     return self;
 }

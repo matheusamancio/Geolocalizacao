@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ListaUsuario.h"
+#import "Usuario.h"
 
 @interface LoginViewController : UIViewController 
 
 @property (weak, nonatomic) IBOutlet UIButton *singInButton;
+@property (weak, nonatomic) IBOutlet UITextField *loginTextField;
+@property (weak, nonatomic) IBOutlet UITextField *senhaTextField;
+@property ListaUsuario *usuarios;
+
 
 @end

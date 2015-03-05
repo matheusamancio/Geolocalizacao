@@ -18,6 +18,8 @@
 		DDB6C8FA1AA48A65007A1EB2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB6C8F91AA48A65007A1EB2 /* CoreLocation.framework */; };
 		EC2930E81AA7910D0001EA0F /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2930E71AA7910D0001EA0F /* Usuario.m */; };
 		EC2930EB1AA7914D0001EA0F /* CadastroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2930EA1AA7914D0001EA0F /* CadastroViewController.m */; };
+		EC2930EE1AA7A5260001EA0F /* ListaUsuario.m in Sources */ = {isa = PBXBuildFile; fileRef = EC2930ED1AA7A5260001EA0F /* ListaUsuario.m */; };
+		EC3BAEA81AA7EB7900D9E356 /* PerfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3BAEA71AA7EB7900D9E356 /* PerfilViewController.m */; };
 		EC3C4EDD1AA747FB00027F6E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3C4EDC1AA747FB00027F6E /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,10 @@
 		EC2930E71AA7910D0001EA0F /* Usuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Usuario.m; sourceTree = "<group>"; };
 		EC2930E91AA7914D0001EA0F /* CadastroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastroViewController.h; sourceTree = "<group>"; };
 		EC2930EA1AA7914D0001EA0F /* CadastroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CadastroViewController.m; sourceTree = "<group>"; };
+		EC2930EC1AA7A5260001EA0F /* ListaUsuario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListaUsuario.h; sourceTree = "<group>"; };
+		EC2930ED1AA7A5260001EA0F /* ListaUsuario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListaUsuario.m; sourceTree = "<group>"; };
+		EC3BAEA61AA7EB7900D9E356 /* PerfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerfilViewController.h; sourceTree = "<group>"; };
+		EC3BAEA71AA7EB7900D9E356 /* PerfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerfilViewController.m; sourceTree = "<group>"; };
 		EC3C4EDB1AA747FB00027F6E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		EC3C4EDC1AA747FB00027F6E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,8 +109,12 @@
 				DDB6C8D81AA48A2E007A1EB2 /* ViewController.h */,
 				DDB6C8D91AA48A2E007A1EB2 /* ViewController.m */,
 				DDB6C8DB1AA48A2E007A1EB2 /* Main.storyboard */,
+				EC3BAEA61AA7EB7900D9E356 /* PerfilViewController.h */,
+				EC3BAEA71AA7EB7900D9E356 /* PerfilViewController.m */,
 				EC2930E91AA7914D0001EA0F /* CadastroViewController.h */,
 				EC2930EA1AA7914D0001EA0F /* CadastroViewController.m */,
+				EC2930EC1AA7A5260001EA0F /* ListaUsuario.h */,
+				EC2930ED1AA7A5260001EA0F /* ListaUsuario.m */,
 				EC2930E61AA7910D0001EA0F /* Usuario.h */,
 				EC2930E71AA7910D0001EA0F /* Usuario.m */,
 				EC3C4EDB1AA747FB00027F6E /* LoginViewController.h */,
@@ -247,7 +257,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC2930EE1AA7A5260001EA0F /* ListaUsuario.m in Sources */,
 				EC2930E81AA7910D0001EA0F /* Usuario.m in Sources */,
+				EC3BAEA81AA7EB7900D9E356 /* PerfilViewController.m in Sources */,
 				EC2930EB1AA7914D0001EA0F /* CadastroViewController.m in Sources */,
 				EC3C4EDD1AA747FB00027F6E /* LoginViewController.m in Sources */,
 				DDB6C8DA1AA48A2E007A1EB2 /* ViewController.m in Sources */,

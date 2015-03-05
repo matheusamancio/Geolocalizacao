@@ -16,12 +16,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _usuarios = [ListaUsuario sharedInstance];
+    [_usuarios addObjects];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)botaoLogIn:(id)sender {
+    if ([_usuarios confereUsuario:_loginTextField.text eSenha:_senhaTextField.text]) {
+        [self performSegueWithIdentifier:@"showApp" sender:self];
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Erro" message:@"Usuário ou senha inválidos" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 /*

@@ -12,12 +12,15 @@
 @interface Usuario : NSObject
 
 @property NSString *nome;
-@property NSInteger idade;
+@property NSString *idade;
 @property NSString *telefone;
 @property NSString *pais;
-@property UIImage *foto;
+@property NSString *foto;
 @property NSString *descricao;
+@property NSString *usuario;
+@property NSString *senha;
+@property NSInteger index;
 
-- (instancetype)initWithNome:(NSString *)nome eIdade:(NSInteger)idade eTelefone:(NSString *)telefone ePais:(NSString *)pais eFoto:(UIImage *)foto eDescricao:(NSString *)descricao;
+- (instancetype)initWithNome:(NSString *)nome eIdade:(NSString *)idade eTelefone:(NSString *)telefone ePais:(NSString *)pais eFoto:(NSString *)foto eDescricao:(NSString *)descricao eUsuario:(NSString *)usuario eSenha:(NSString *)senha;
 
 @end
