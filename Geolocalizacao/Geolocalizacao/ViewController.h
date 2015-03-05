@@ -25,6 +25,5 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 - (IBAction)pinar:(id)sender;
-
 @end
 
