@@ -39,8 +39,6 @@
     [_locationManager startUpdatingLocation];
     [_searchBar setClipsToBounds:YES];
     [_searchBar setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
-//    [_searchBar ]
-//    [[UISearchBar appearance] setClipsToBounds:YES];
     _target.layer.borderWidth = 1.0f;
     pesquisouLocations = NO;
     // Do any additional setup after loading the view, typically from a nib.
@@ -63,7 +61,7 @@
     
     if (!pesquisandoLocations) {
         pesquisandoLocations = YES;
-        [self getHotels:_region];
+        //[self getHotels:_region];
         pesquisandoLocations = NO;
     }
     
@@ -90,22 +88,34 @@
 
 
 - (IBAction)pinar:(id)sender {
-    CGPoint point = [sender locationInView:self.mapView];
-    CLLocationCoordinate2D tapPoint = [self.mapView convertPoint:point toCoordinateFromView:self.view];
+    CGPoint touchPoint = [sender locationInView:self.mapView];
+    CLLocationCoordinate2D touchMapCoordinate =
+    [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
     
-    MKPointAnnotation *pm = [[MKPointAnnotation alloc] init];
-    
-    pm.coordinate = tapPoint;
-    [self.mapView removeAnnotations: [self.mapView annotations]];
-    [self.mapView addAnnotation:pm];
-    pm.title = @"mackmobile";
+    CLLocation *destino = [[CLLocation alloc]
+                           initWithLatitude:touchMapCoordinate.latitude
+                           longitude:touchMapCoordinate.longitude];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:destino completionHandler:^(NSArray *placemark, NSError *error) {
+        
+        
+        if (placemark.count > 0)
+        {
+            _thePlacemark = [placemark objectAtIndex:0];
+        }
+        
+        //now create the annotation...
+        MKPointAnnotation *pm = [[MKPointAnnotation alloc] init];
+        pm.coordinate = touchMapCoordinate;
+        [self.mapView removeAnnotations: [self.mapView annotations]];
+        [self.mapView addAnnotation:pm];
+        pm.title = _thePlacemark.thoroughfare;
+    }];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
 
 {
-    
-    
     
     //fazendo os botões e animação do pino
     
@@ -115,8 +125,6 @@
         
         return nil;
     
-    
-    
     //try to dequeue an existing pin view first
     
     static NSString* AnnotationIdentifier = @"AnnotationIdentifier";
@@ -124,15 +132,11 @@
     
     
     MKPinAnnotationView* pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
-    
-    pinView.animatesDrop = YES;
+
     
     pinView.canShowCallout = YES;
     
     pinView.pinColor = MKPinAnnotationColorRed;
-    
-    
-    
     
     
     //button on the right for popup for pins
@@ -170,62 +174,9 @@
     
 }
 
-- (IBAction)pesquisar:(id)sender {
-    [sender resignFirstResponder];
-    [_mapView removeAnnotations:[_mapView annotations]];
-    [self performSearch];
-}
 
-- (void)getHotels:(MKCoordinateRegion)reg {
-    
-    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = @"hotel";
-    request.region = reg;
-    _matchingItems = [[NSMutableArray alloc] init];
-    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
-    
-    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-        
-        if (response.mapItems.count == 0)
-            NSLog(@"No Matches");
-        else
-            for (MKMapItem *item in response.mapItems) {
-                [_matchingItems addObject:item];
-                MKPointAnnotation *annotation =[[MKPointAnnotation alloc]init];
-                annotation.coordinate = item.placemark.coordinate;
-                annotation.title = item.name;
-                [_mapView addAnnotation:annotation];
-            }
-    }];
-    
-    [self.mapView setRegion:reg animated:YES];
-    pesquisouLocations = YES;
 
-}
-
--(void)performSearch {
-    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = _endereco.text;
-    request.region = _mapView.region;
-    _matchingItems = [[NSMutableArray alloc] init];
-    MKLocalSearch *search = [[MKLocalSearch alloc]initWithRequest:request];
-    
-    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-        
-    if (response.mapItems.count == 0)
-        NSLog(@"No Matches");
-    else
-        for (MKMapItem *item in response.mapItems) {
-            [_matchingItems addObject:item];
-            MKPointAnnotation *annotation =[[MKPointAnnotation alloc]init];
-            annotation.coordinate = item.placemark.coordinate;
-            annotation.title = item.name;
-            [_mapView addAnnotation:annotation];
-        }
-    }];
-}
-
-- (IBAction)getRoute:(id)sender {
+- (void)getRoute {
     MKDirectionsRequest *directionsRequest = [[MKDirectionsRequest alloc] init];
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:_thePlacemark];
     [directionsRequest setSource:[MKMapItem mapItemForCurrentLocation]];
@@ -278,27 +229,6 @@
     routeLineRenderer.lineWidth = 5;
     return routeLineRenderer;
 }
-
-//-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-//    // If it's the user location, just return nil.
-//    if ([annotation isKindOfClass:[MKUserLocation class]])
-//        return nil;
-//    // Handle any custom annotationss.
-//    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
-//        // Try to dequeue an existing pin view first.
-//        MKPinAnnotationView *pinView = (MKPinAnnotationView*)[self.mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomPinAnnotationView"];
-//        if (!pinView)
-//        {
-//            // If an existing pin view was not available, create one.
-//            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"CustomPinAnnotationView"];
-//            pinView.canShowCallout = YES;
-//        } else {
-//            pinView.annotation = annotation;
-//        }
-//        return pinView;
-//    }
-//    return nil;
-//}
 
 - (void)limparRota {
     [self.mapView removeOverlay:_routeDetails.polyline];
