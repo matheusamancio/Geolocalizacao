@@ -16,6 +16,12 @@
                         <constraint firstAttribute="width" constant="480" id="1Ds-3W-cgm"/>
                         <constraint firstAttribute="height" constant="480" id="U5R-H5-kQ4"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="1Ds-3W-cgm"/>
+                            <exclude reference="U5R-H5-kQ4"/>
+                        </mask>
+                    </variation>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -24,19 +30,27 @@
                 <constraint firstItem="Kdh-KR-DZE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="32i-9U-4g5"/>
                 <constraint firstAttribute="bottom" secondItem="Kdh-KR-DZE" secondAttribute="bottom" id="5LG-9g-PPl"/>
                 <constraint firstAttribute="bottom" secondItem="Kdh-KR-DZE" secondAttribute="bottom" id="7Ll-At-bfN"/>
+                <constraint firstItem="Kdh-KR-DZE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="CuQ-6O-agR"/>
                 <constraint firstItem="Kdh-KR-DZE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UXq-f5-1I6"/>
                 <constraint firstAttribute="trailing" secondItem="Kdh-KR-DZE" secondAttribute="trailing" id="YVq-ef-Xkg"/>
                 <constraint firstAttribute="trailing" secondItem="Kdh-KR-DZE" secondAttribute="trailing" id="ZDe-Su-WVl"/>
+                <constraint firstAttribute="trailing" secondItem="Kdh-KR-DZE" secondAttribute="trailing" id="bDg-ra-aOo"/>
+                <constraint firstAttribute="bottom" secondItem="Kdh-KR-DZE" secondAttribute="bottom" id="bbZ-Me-gLA"/>
                 <constraint firstItem="Kdh-KR-DZE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bwa-es-JxX"/>
+                <constraint firstItem="Kdh-KR-DZE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cNn-ew-r6H"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="2rt-BR-feu"/>
                     <exclude reference="32i-9U-4g5"/>
+                    <exclude reference="5LG-9g-PPl"/>
                     <exclude reference="7Ll-At-bfN"/>
                     <exclude reference="UXq-f5-1I6"/>
                     <exclude reference="YVq-ef-Xkg"/>
+                    <exclude reference="ZDe-Su-WVl"/>
+                    <exclude reference="bwa-es-JxX"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="548" y="455"/>
