@@ -57,7 +57,7 @@
     
     if (_atualizacao) {
         [_mapView setRegion: _region animated:YES];
-        _atualizacao = false;
+        _atualizacao = YES;
     }
     
     if (!pesquisandoLocations) {
@@ -70,6 +70,8 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.locationManager stopUpdatingLocation];
+    [self.endereco resignFirstResponder];
+    
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -113,6 +115,8 @@
     }];
 }
 
+
+
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
 
 {
@@ -143,7 +147,7 @@
     pinView.rightCalloutAccessoryView = rightButton;
     
     UIButton *btnTwo = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    btnTwo.frame = CGRectMake(0, 0, 20, 20);
+    btnTwo.frame = CGRectMake(0, 0, 40, 40);
     UIImage *btnImage = [UIImage imageNamed:@"garage-25"];
     [btnTwo setImage:btnImage forState:UIControlStateNormal];
     
@@ -151,6 +155,8 @@
     [btnTwo setTitle:annotation.title forState:UIControlStateNormal];
     [btnTwo addTarget:self action:@selector(rota) forControlEvents:UIControlEventTouchUpInside];
     pinView.leftCalloutAccessoryView = btnTwo;
+    
+    [btnTwo addTarget:self action:@selector(getRoute) forControlEvents:UIControlEventTouchUpInside];
     
     return pinView;
 }
@@ -172,7 +178,9 @@
             region2.center.longitude = _thePlacemark.location.coordinate.longitude;
             region2.span = MKCoordinateSpanMake(spanX, spanY);
             [_mapView setRegion:region2 animated:YES];
+            [self.mapView removeAnnotations: [_mapView annotations]];
             [self addAnnotation:_thePlacemark];
+            
         }
         [self getRoute];
     }];
@@ -190,6 +198,7 @@
             NSLog(@"Error %@", error.description);
         } else {
             _routeDetails = response.routes.lastObject;
+            
             [_mapView addOverlay:_routeDetails.polyline level:MKOverlayLevelAboveRoads];
         }
     }];

@@ -30,6 +30,9 @@
     _usuarios = [[NSMutableArray alloc] init];
     Usuario *usuario = [[Usuario alloc] initWithNome:@"Kaique Pantosi" eIdade:@"20" eTelefone:@"941083040" ePais:@"Brasil" eFoto:@"kaique" eDescricao:@"Oi eu sou o goku" eUsuario:@"KaiqueDamato" eSenha:@"mostarda"];
     [_usuarios addObject:usuario];
+    Usuario *usuario1 = [[Usuario alloc] initWithNome:@"Kaique Pantosi" eIdade:@"20" eTelefone:@"941083040" ePais:@"Brasil" eFoto:@"home" eDescricao:@"Oi eu sou o goku" eUsuario:@"" eSenha:@""];
+    [_usuarios addObject:usuario1];
+    
 }
 
 - (void)addUsers:(Usuario *)usuario {
@@ -47,5 +50,7 @@
     }
     return NO;
 }
+
+
 
 @end

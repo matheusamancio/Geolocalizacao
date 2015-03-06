@@ -64,6 +64,7 @@
     return YES;
 }
 
+
 - (void)didTouchUpView {
     if ([_nomeTextField isFirstResponder]) {
         [_nomeTextField resignFirstResponder];
@@ -75,7 +76,13 @@
         [_paisTextField resignFirstResponder];
     } else if ([_descricaoTextView isFirstResponder]) {
         [_descricaoTextView resignFirstResponder];
-    }
+    } else if ([_usuarioTextField isFirstResponder]) {
+        [_usuarioTextField resignFirstResponder];
+    }else if([_senhaTextField isFirstResponder])
+        {
+            [_senhaTextField resignFirstResponder];
+        }
+    
 }
 
 - (IBAction)escolheFoto:(id)sender {
