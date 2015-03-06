@@ -1215,6 +1215,12 @@
                                 <exclude reference="gBx-cx-lcj"/>
                                 <exclude reference="pFB-jV-aQE"/>
                                 <exclude reference="z8T-OW-zWC"/>
+                                <exclude reference="C63-QN-dFY"/>
+                                <exclude reference="E3c-NB-dCq"/>
+                                <exclude reference="dP6-pe-aZe"/>
+                                <exclude reference="dtF-u9-sPD"/>
+                                <exclude reference="e8v-if-IZc"/>
+                                <exclude reference="o36-Ac-n6Q"/>
                                 <exclude reference="0MQ-CY-ixU"/>
                                 <exclude reference="2xs-fj-VTF"/>
                                 <exclude reference="66H-Pj-qUV"/>
@@ -1223,12 +1229,6 @@
                                 <exclude reference="YkJ-0O-qAK"/>
                                 <exclude reference="ghd-R4-VdE"/>
                                 <exclude reference="lLB-VK-rIn"/>
-                                <exclude reference="C63-QN-dFY"/>
-                                <exclude reference="E3c-NB-dCq"/>
-                                <exclude reference="dP6-pe-aZe"/>
-                                <exclude reference="dtF-u9-sPD"/>
-                                <exclude reference="e8v-if-IZc"/>
-                                <exclude reference="o36-Ac-n6Q"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
