@@ -220,7 +220,9 @@
             MKPointAnnotation *pm2= [[MKPointAnnotation alloc]init];
             CLLocation* c1 =[[CLLocation alloc]initWithLatitude:_thePlacemark.location.coordinate.latitude longitude:_thePlacemark.location.coordinate.longitude];
             pm2.coordinate = c1.coordinate;
+            pm2.title = _thePlacemark.thoroughfare;
             [_mapView addAnnotation:pm2];
+            
         }
     }];
 }
