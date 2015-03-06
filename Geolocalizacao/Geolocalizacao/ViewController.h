@@ -19,6 +19,7 @@
 @property NSMutableArray *matchingItems;
 @property CLLocationManager * locationManager;
 @property MKPointAnnotation *pm;
+@property NSMutableArray *listaAnnotations;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISearchBar *endereco;
 @property (weak, nonatomic) IBOutlet UIButton *localizacaoAtual;

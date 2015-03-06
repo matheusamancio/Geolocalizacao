@@ -42,6 +42,7 @@
     [_searchBar setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
     _target.layer.borderWidth = 1.0f;
     pesquisouLocations = NO;
+    _listaAnnotations = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -109,9 +110,11 @@
         //now create the annotation...
         MKPointAnnotation *pm = [[MKPointAnnotation alloc] init];
         pm.coordinate = touchMapCoordinate;
-        [self.mapView removeAnnotations: [self.mapView annotations]];
-        [self.mapView addAnnotation:pm];
         pm.title = _thePlacemark.thoroughfare;
+        [self.mapView removeAnnotations: _listaAnnotations];
+        [self.mapView removeOverlays:[_mapView overlays]];
+        [_listaAnnotations addObject:pm];
+        [self.mapView addAnnotation:pm];
     }];
 }
 
