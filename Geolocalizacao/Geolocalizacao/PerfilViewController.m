@@ -23,12 +23,17 @@
     _telefoneLabel.text = [_usuarios.usuarios[_usuarios.index] telefone];
     _paisLabel.text = [_usuarios.usuarios[_usuarios.index] pais];
     _descricaoTextView.text = [_usuarios.usuarios[_usuarios.index] descricao];
+    [self setNeedsStatusBarAppearanceUpdate];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (IBAction)botaoLogoff:(id)sender {

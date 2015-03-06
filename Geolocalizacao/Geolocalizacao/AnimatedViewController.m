@@ -29,6 +29,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [UIView animateWithDuration:0.3
                           delay:1.0
@@ -62,10 +66,6 @@
     [self performSegueWithIdentifier:@"showLogIn" sender:self];
     [_timer invalidate];
     _timer = nil;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
 }
 
 /*
