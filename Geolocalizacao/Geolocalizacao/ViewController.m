@@ -59,6 +59,13 @@
         [_mapView setRegion: _region animated:YES];
         _atualizacao = false;
     }
+    
+    if (!pesquisandoLocations) {
+        pesquisandoLocations = YES;
+        //[self getHotels:_region];
+        pesquisandoLocations = NO;
+    }
+    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -81,29 +88,54 @@
 }
 
 - (IBAction)pinar:(id)sender {
-    CGPoint point = [sender locationInView:_mapView];
-    CLLocationCoordinate2D tapPoint = [_mapView convertPoint:point toCoordinateFromView:self.view];
+    CGPoint touchPoint = [sender locationInView:self.mapView];
+    CLLocationCoordinate2D touchMapCoordinate =
+    [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
     
-    MKPointAnnotation *pm = [[MKPointAnnotation alloc] init];
-    
-    pm.coordinate = tapPoint;
-    [self.mapView removeAnnotations: [_mapView annotations]];
-    [self.mapView addAnnotation:pm];
-    pm.title = _thePlacemark.thoroughfare;
+    CLLocation *destino = [[CLLocation alloc]
+                           initWithLatitude:touchMapCoordinate.latitude
+                           longitude:touchMapCoordinate.longitude];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:destino completionHandler:^(NSArray *placemark, NSError *error) {
+        
+        
+        if (placemark.count > 0)
+        {
+            _thePlacemark = [placemark objectAtIndex:0];
+        }
+        
+        //now create the annotation...
+        MKPointAnnotation *pm = [[MKPointAnnotation alloc] init];
+        pm.coordinate = touchMapCoordinate;
+        [self.mapView removeAnnotations: [self.mapView annotations]];
+        [self.mapView addAnnotation:pm];
+        pm.title = _thePlacemark.thoroughfare;
+    }];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
 
 {
+    
+    //fazendo os botões e animação do pino
+    
+    //if it's user location, return nil
+    
     if ([annotation isKindOfClass:[MKUserLocation class]])
         
         return nil;
     
+    //try to dequeue an existing pin view first
+    
     static NSString* AnnotationIdentifier = @"AnnotationIdentifier";
     MKPinAnnotationView* pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
-    pinView.animatesDrop = YES;
+
+    
     pinView.canShowCallout = YES;
     pinView.pinColor = MKPinAnnotationColorRed;
+    
+    
+    //button on the right for popup for pins
     
     UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     [rightButton setTitle:annotation.title forState:UIControlStateNormal];

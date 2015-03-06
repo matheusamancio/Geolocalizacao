@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _usuarios = [ListaUsuario sharedInstance];
     // Do any additional setup after loading the view.
 }
 
@@ -26,10 +27,10 @@
 
 - (IBAction)botaoSalvaEndereco:(id)sender {
     Usuario *usuario = _usuarios.usuarios[_usuarios.index];
-    if ([_enderecoTextField.text isEqualToString:@""]) {
+    if (![_enderecoTextField.text isEqualToString:@""]) {
         [usuario setEndereco:_enderecoTextField.text];
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*
