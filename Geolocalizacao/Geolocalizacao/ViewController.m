@@ -42,6 +42,8 @@
     [_searchBar setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
     _target.layer.borderWidth = 1.0f;
     pesquisouLocations = NO;
+    _listaAnnotations = [[NSMutableArray alloc]init];
+    _listaPlacemarks = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -155,9 +157,15 @@
             region2.center.longitude = _thePlacemark.location.coordinate.longitude;
             region2.span = MKCoordinateSpanMake(spanX, spanY);
             [_mapView setRegion:region2 animated:YES];
-            [self.mapView removeAnnotations: [_mapView annotations]];
-            [self addAnnotation:_thePlacemark];
+          
+            MKPointAnnotation *pm2= [[MKPointAnnotation alloc]init];
+            CLLocation* c1 =[[CLLocation alloc]initWithLatitude:_thePlacemark.location.coordinate.latitude longitude:_thePlacemark.location.coordinate.longitude];
+            pm2.coordinate = c1.coordinate;
             
+            [self.mapView removeAnnotations: _listaAnnotations];
+     
+            [_listaAnnotations addObject:pm2];
+            [_mapView addAnnotation:pm2];
         }
         [self getRoute];
     }];
