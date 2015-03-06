@@ -84,34 +84,32 @@
 }
 
 - (IBAction)pinar:(id)sender {
-    CGPoint point = [sender locationInView:_mapView];
-    CLLocationCoordinate2D tapPoint = [_mapView convertPoint:point toCoordinateFromView:self.view];
-    CLLocation *loc =[[CLLocation alloc] initWithLatitude:tapPoint.latitude longitude:tapPoint.longitude];
+    CGPoint touchPoint = [sender locationInView:_mapView];
+    CLLocationCoordinate2D touchMapCoordinate = [_mapView convertPoint:touchPoint toCoordinateFromView:self.view];
+    CLLocation *destino =[[CLLocation alloc] initWithLatitude:touchMapCoordinate.latitude longitude:touchMapCoordinate.longitude];
     
-    MKPointAnnotation *pm = [[MKPointAnnotation alloc] init];
-    
-    pm.coordinate = tapPoint;
-    [self.mapView removeAnnotations: [_mapView annotations]];
-    [self.mapView addAnnotation:pm];
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    [geocoder reverseGeocodeLocation: loc completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (error) {
-            NSLog(@"%@", error);
-        } else {
-            _thePlacemark = [placemarks lastObject];
-            pm.title = _thePlacemark.thoroughfare;
+    [geocoder reverseGeocodeLocation:destino completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        if (placemarks.count > 0) {
+            _thePlacemark = [placemarks objectAtIndex:0];
         }
-        [_mapView removeOverlays:[_mapView overlays]];
+        
+        //now create the annotation...
+        MKPointAnnotation *pm = [[MKPointAnnotation alloc] init];
+        pm.coordinate = touchMapCoordinate;
+        pm.title = _thePlacemark.thoroughfare;
+        [self.mapView removeAnnotations: _listaAnnotations];
+        [self.mapView removeOverlays:[_mapView overlays]];
+        [_listaAnnotations addObject:pm];
+        [self.mapView addAnnotation:pm];
     }];
 }
 
 
 
-- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
-
-{
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[MKUserLocation class]])
-        
         return nil;
     
     static NSString* AnnotationIdentifier = @"AnnotationIdentifier";
@@ -132,7 +130,7 @@
     
     
     [btnTwo setTitle:annotation.title forState:UIControlStateNormal];
-    [btnTwo addTarget:self action:@selector(rota) forControlEvents:UIControlEventTouchUpInside];
+//    [btnTwo addTarget:self action:@selector(rota) forControlEvents:UIControlEventTouchUpInside];
     pinView.leftCalloutAccessoryView = btnTwo;
     
     [btnTwo addTarget:self action:@selector(getRoute) forControlEvents:UIControlEventTouchUpInside];
@@ -204,7 +202,27 @@
     return routeLineRenderer;
 }
 
-- (void)rota {
+- (void)addPin:(NSString *)endereco {
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:endereco completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        } else {
+            _thePlacemark = [placemarks lastObject];
+            float spanX = 1.00725;
+            float spanY = 1.00725;
+            MKCoordinateRegion region2;
+            region2.center.latitude = _thePlacemark.location.coordinate.latitude;
+            region2.center.longitude = _thePlacemark.location.coordinate.longitude;
+            region2.span = MKCoordinateSpanMake(spanX, spanY);
+            [_mapView setRegion:region2 animated:YES];
+            
+            MKPointAnnotation *pm2= [[MKPointAnnotation alloc]init];
+            CLLocation* c1 =[[CLLocation alloc]initWithLatitude:_thePlacemark.location.coordinate.latitude longitude:_thePlacemark.location.coordinate.longitude];
+            pm2.coordinate = c1.coordinate;
+            [_mapView addAnnotation:pm2];
+        }
+    }];
 }
 
 - (void)limparRota {

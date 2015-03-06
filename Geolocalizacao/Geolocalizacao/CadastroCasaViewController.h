@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ListaUsuario.h"
 #import "Usuario.h"
+#import "ViewController.h"
 
 @interface CadastroCasaViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *enderecoTextField;
 @property ListaUsuario *usuarios;
+@property ViewController *vc;
 
 @end

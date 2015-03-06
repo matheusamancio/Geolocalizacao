@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _vc = [[ViewController alloc] init];
     _usuarios = [ListaUsuario sharedInstance];
     [self setNeedsStatusBarAppearanceUpdate];
     // Do any additional setup after loading the view.
@@ -34,6 +35,7 @@
     Usuario *usuario = _usuarios.usuarios[_usuarios.index];
     if (![_enderecoTextField.text isEqualToString:@""]) {
         [usuario setEndereco:_enderecoTextField.text];
+        [self.tabBarController.viewControllers[0] addPin:_enderecoTextField.text];
     }
 //    [self dismissViewControllerAnimated:YES completion:nil];
 }
