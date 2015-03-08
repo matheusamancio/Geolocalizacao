@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _vc = [[ViewController alloc] init];
     _usuarios = [ListaUsuario sharedInstance];
     [self setNeedsStatusBarAppearanceUpdate];
     // Do any additional setup after loading the view.

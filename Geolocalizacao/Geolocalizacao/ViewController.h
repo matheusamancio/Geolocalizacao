@@ -31,5 +31,7 @@
 
 - (IBAction)pinar:(id)sender;
 - (void)addPin:(NSString *)endereco;
+-(id)addCoordenada;
+
 @end
 

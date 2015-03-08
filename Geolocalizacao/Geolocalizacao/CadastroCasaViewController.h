@@ -15,6 +15,5 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *enderecoTextField;
 @property ListaUsuario *usuarios;
-@property ViewController *vc;
 
 @end

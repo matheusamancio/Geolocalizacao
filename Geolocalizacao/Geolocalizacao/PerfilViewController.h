@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *telefoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *paisLabel;
 @property (weak, nonatomic) IBOutlet UITextView *descricaoTextView;
+
 @property ListaUsuario *usuarios;
 
 @end

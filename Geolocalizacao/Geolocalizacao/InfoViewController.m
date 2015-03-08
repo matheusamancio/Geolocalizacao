@@ -16,6 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _usuarios = [ListaUsuario sharedInstance];
+    _imagemView.image = [UIImage imageNamed:[_usuarios.usuarios[_usuarios.index] foto]];
+    _nomeLabel.text = [_usuarios.usuarios[_usuarios.index] nome];
+    _idadeLabel.text = [_usuarios.usuarios[_usuarios.index] idade];
+    _telefoneLabel.text = [_usuarios.usuarios[_usuarios.index] telefone];
+    _paisLabel.text = [_usuarios.usuarios[_usuarios.index] pais];
+    _enderecoLabel.text = [_usuarios.usuarios[_usuarios.index] endereco];
+    _descricaoTextView.text = [_usuarios.usuarios[_usuarios.index] descricao];
+
     [self setNeedsStatusBarAppearanceUpdate];
     // Do any additional setup after loading the view.
 }
@@ -29,14 +38,8 @@
     return UIStatusBarStyleLightContent;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)buttonVoltar:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-*/
 
 @end
