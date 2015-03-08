@@ -22,6 +22,7 @@
         _usuario = usuario;
         _senha = senha;
         _endereco = nil;
+        _coordenada = nil;
     }
     return self;
 }

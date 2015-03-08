@@ -20,6 +20,7 @@
 @property NSString *usuario;
 @property NSString *senha;
 @property NSString *endereco;
+@property id coordenada;
 
 - (instancetype)initWithNome:(NSString *)nome eIdade:(NSString *)idade eTelefone:(NSString *)telefone ePais:(NSString *)pais eFoto:(NSString *)foto eDescricao:(NSString *)descricao eUsuario:(NSString *)usuario eSenha:(NSString *)senha;
 

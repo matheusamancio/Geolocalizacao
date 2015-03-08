@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "CoreLocation/CoreLocation.h"
+#import "ListaUsuario.h"
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate>
 
@@ -21,6 +22,9 @@
 @property MKPointAnnotation *pm;
 @property NSMutableArray *listaAnnotations;
 @property NSMutableArray *listaPlacemarks;
+@property CLLocation *coordenada;
+@property CLLocation *coordenadaMapa;
+@property ListaUsuario *usuarios;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISearchBar *endereco;
 @property (weak, nonatomic) IBOutlet UIButton *localizacaoAtual;
@@ -28,5 +32,7 @@
 
 - (IBAction)pinar:(id)sender;
 - (void)addPin:(NSString *)endereco;
+-(id)addCoordenada;
+
 @end
 
