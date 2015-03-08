@@ -20,6 +20,8 @@
 @property NSString *usuario;
 @property NSString *senha;
 @property NSString *endereco;
+@property double latitude;
+@property double longitude;
 
 - (instancetype)initWithNome:(NSString *)nome eIdade:(NSString *)idade eTelefone:(NSString *)telefone ePais:(NSString *)pais eFoto:(NSString *)foto eDescricao:(NSString *)descricao eUsuario:(NSString *)usuario eSenha:(NSString *)senha;
 

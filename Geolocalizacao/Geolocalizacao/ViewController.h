@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "CoreLocation/CoreLocation.h"
+#import "ListaUsuario.h"
+#import "Usuario.h"
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate>
 
@@ -21,6 +23,7 @@
 @property MKPointAnnotation *pm;
 @property NSMutableArray *listaAnnotations;
 @property NSMutableArray *listaPlacemarks;
+@property ListaUsuario *usuarios;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UISearchBar *endereco;
 @property (weak, nonatomic) IBOutlet UIButton *localizacaoAtual;

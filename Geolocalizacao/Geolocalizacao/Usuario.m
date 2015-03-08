@@ -22,6 +22,8 @@
         _usuario = usuario;
         _senha = senha;
         _endereco = nil;
+        _latitude = 0;
+        _longitude = 0;
     }
     return self;
 }

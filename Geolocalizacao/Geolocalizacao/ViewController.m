@@ -44,6 +44,7 @@
     pesquisouLocations = NO;
     _listaAnnotations = [[NSMutableArray alloc]init];
     _listaPlacemarks = [[NSMutableArray alloc]init];
+    _usuarios = [ListaUsuario sharedInstance];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -130,7 +131,6 @@
     
     
     [btnTwo setTitle:annotation.title forState:UIControlStateNormal];
-//    [btnTwo addTarget:self action:@selector(rota) forControlEvents:UIControlEventTouchUpInside];
     pinView.leftCalloutAccessoryView = btnTwo;
     
     [btnTwo addTarget:self action:@selector(getRoute) forControlEvents:UIControlEventTouchUpInside];
@@ -203,6 +203,7 @@
 }
 
 - (void)addPin:(NSString *)endereco {
+    Usuario *usuario = _usuarios.usuarios[_usuarios.index];
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder geocodeAddressString:endereco completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
@@ -220,7 +221,11 @@
             MKPointAnnotation *pm2= [[MKPointAnnotation alloc]init];
             CLLocation* c1 =[[CLLocation alloc]initWithLatitude:_thePlacemark.location.coordinate.latitude longitude:_thePlacemark.location.coordinate.longitude];
             pm2.coordinate = c1.coordinate;
+            pm2.title = _thePlacemark.thoroughfare;
             [_mapView addAnnotation:pm2];
+            [usuario setLatitude:_thePlacemark.location.coordinate.latitude];
+            [usuario setLongitude:_thePlacemark.location.coordinate.longitude];
+            
         }
     }];
 }
